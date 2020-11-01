@@ -1,0 +1,57 @@
+@startuml
+
+package subjects {
+    class Subject {
+        - observers: List<Observer> = new Arraylist<>()
+        - state: int
+        .. Getter ..
+        + getState(): int
+        .. Setter ..
+        + setState(state: int): void
+        .. Other ..
+        + notifyAllObservers(): void
+    }
+}
+
+package observers {
+    abstract Observer {
+        + subject: Subject
+        + {abstract} update(): void
+    }
+
+    class BinaryObserver {
+        .. Constructor ..
+        + BinaryObserver(subject: Subject): void
+        .. Override ..
+        + update(): void
+    }
+
+    class OctalObserver {
+        .. Constructor ..
+        + OctalObserver(subject: Subject): void
+        .. Override ..
+        + update(): void
+    }
+
+    class HexaObserver {
+        .. Constructor ..
+        + HexaObserver(subject: Subject): void
+        .. Override ..
+        + update(): void
+    }
+
+    Observer <|-- BinaryObserver
+    Observer <|-- OctalObserver
+    Observer <|-- HexaObserver
+}
+
+observers o-> subjects
+
+class Client {
+    + {static} main(): void
+}
+
+observers <--- Client
+subjects <--- Client
+
+@enduml

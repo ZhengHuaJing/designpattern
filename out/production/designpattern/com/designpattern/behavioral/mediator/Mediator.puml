@@ -1,0 +1,29 @@
+@startuml
+
+class User {
+    - name: String
+    .. Constructor ..
+    + User(name: String): void
+    .. Setter ..
+    + setName(name: String): void
+    .. Getter ..
+    + getName(): String
+    .. toString ..
+    + toString(): String
+    .. Other ..
+    + sendMessage(message: String): void
+}
+
+class ChatRoom {
+    + {static} showMessage(user: User, message: String): void
+}
+
+class Client {
+    + {static} main(): void
+}
+
+User -> ChatRoom
+
+Client -> User
+
+@enduml

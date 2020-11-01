@@ -1,0 +1,81 @@
+@startuml
+
+interface ComputerPart {
+    + {abstract} accept(computerPartVisitor: ComputerPartVisitor): void
+}
+
+class Keyboard {
+    .. Override ..
+    + accept(computerPartVisitor: ComputerPartVisitor): void
+}
+
+class Monitor {
+    .. Override ..
+    + accept(computerPartVisitor: ComputerPartVisitor): void
+}
+
+class Mouse {
+    .. Override ..
+    + accept(computerPartVisitor: ComputerPartVisitor): void
+}
+
+class Computer {
+    - parts: ComputerPart[]
+    .. Constructor ..
+    + Computer(): void
+    .. Override ..
+    + accept(computerPartVisitor: ComputerPartVisitor): void
+}
+
+interface ComputerPartVisitor {
+    + {abstract} visit(computer: Computer): void
+    + {abstract} visit(mouse: Mouse): void
+    + {abstract} visit(keyboard: Keyboard): void
+    + {abstract} visit(monitor: Monitor): void
+}
+
+class ComputerPartDisplayVisitor {
+    .. Constructor ..
+    + visit(computer: Computer): void
+    + visit(mouse: Mouse): void
+    + visit(keyboard: Keyboard): void
+    + visit(monitor: Monitor): void
+}
+
+class Client {
+    + {static} main(): void
+}
+
+ComputerPart <|.. Keyboard
+ComputerPart <|.. Monitor
+ComputerPart <|.. Mouse
+ComputerPart <|.. Computer
+
+ComputerPartVisitor <|.. ComputerPartDisplayVisitor
+
+Client -up-> Computer
+Client --> ComputerPartDisplayVisitor
+
+ComputerPartVisitor -up-> Keyboard
+ComputerPartVisitor -up-> Monitor
+ComputerPartVisitor -up-> Mouse
+ComputerPartVisitor -up-> Computer
+
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

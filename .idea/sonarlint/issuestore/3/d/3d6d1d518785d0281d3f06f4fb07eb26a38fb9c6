@@ -1,0 +1,19 @@
+
+`
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(Âÿáô¸ˇˇˇˇ8≠≠“¿–.
+N
+java:S1612",Replace this lambda with a method reference.(Âÿáô¸ˇˇˇˇ8Ãä“¿–.
+T
+java:S3655!"7Call "Optional#isPresent()" before accessing the value.(»ªå8øÔ⁄¡–.
+I
+java:S1612",Replace this lambda with a method reference.(¨ÓΩ·8á∞‘¿–.
+T
+java:S3655"7Call "Optional#isPresent()" before accessing the value.(¨ÓΩ·8á∞‘¿–.
+[
+java:S1155">Use isEmpty() to check whether the collection is empty or not.(¨ÓΩ·8á∞‘¿–.
+I
+java:S1612<",Replace this lambda with a method reference.(ˆØ„‰8ã∆ˇ¡–.
+Y
+java:S3655&"7Call "Optional#isPresent()" before accessing the value.(≤€˝·˛ˇˇˇˇ8êÉ”¡–.
+Y
+java:S3655"7Call "Optional#isPresent()" before accessing the value.(Âÿáô¸ˇˇˇˇ8Ãä“¿–.

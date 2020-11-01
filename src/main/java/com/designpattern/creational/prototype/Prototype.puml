@@ -1,0 +1,71 @@
+@startuml
+
+package shapes {
+    abstract Shape {
+        - id: String
+        # type: String
+        .. Setter ..
+        + setId(): void
+        .. Getter ..
+        + getType(): String
+        + getId(): String
+        .. Other ..
+        + {abstract} draw(): void
+        + clone(): Object
+    }
+
+    class Circle {
+        .. Constructor ..
+        + Circle(): void
+        .. Override ..
+        + draw(): void
+    }
+
+    class Square {
+        .. Constructor ..
+        + Square(): void
+        .. Override ..
+        + draw(): void
+    }
+
+    class Rectangle {
+        .. Constructor ..
+        + Rectangle(): void
+        .. Override ..
+        + draw(): void
+    }
+}
+
+class ShapeCache {
+    - {static} shapeMap: HashMap<String, Shape> = new HashMap<>()
+    + {static} getShape(shapeId: String): Shape
+    + {static} loadCache(): void
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Shape <|-- Rectangle
+Shape <|-- Square
+Shape <|-- Circle
+
+ShapeCache *-> shapes
+
+Client --> ShapeCache
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+

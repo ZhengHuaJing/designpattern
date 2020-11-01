@@ -1,0 +1,60 @@
+@startuml
+
+package expressions {
+    interface Expression {
+        + {abstract} interpret(content: String): boolean
+    }
+
+    class TerminalExpression {
+        - data: String
+        .. Constructor ..
+        + TerminalExpression(data: String): void
+        .. Override ..
+        + interpret(content: String): boolean
+    }
+
+    class AndExpression {
+        - expr1: Expression
+        - expr2: Expression
+        .. Constructor ..
+        + AndExpression(expr1: Expression, expr2: Expression): void
+        .. Override ..
+        + interpret(content: String): boolean
+    }
+
+    class OrExpression {
+        - expr1: Expression
+        - expr2: Expression
+        .. Constructor ..
+        + OrExpression(expr1: Expression, expr2: Expression): void
+        .. Override ..
+        + interpret(content: String): boolean
+    }
+
+    Expression <|.. TerminalExpression
+    Expression <|.. AndExpression
+    Expression <|.. OrExpression
+}
+
+class Client {
+    + {static} main(): void
+}
+
+expressions <-right Client
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

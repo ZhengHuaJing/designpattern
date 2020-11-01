@@ -1,0 +1,25 @@
+@startuml
+
+class Employee {
+    - name: String
+    - dept: String
+    - salary: int
+    - subordinates: List<Employee>
+    .. Constructor ..
+    + Employee(): void
+    .. Getter ..
+    + getSubordinates(): List<Employee>
+    .. toString ..
+    + toString(): String
+    .. Other ..
+    + add(e: Employee): void
+    + remove(e: Employee): void
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Client --> Employee
+
+@enduml

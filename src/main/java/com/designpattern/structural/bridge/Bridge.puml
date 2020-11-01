@@ -1,0 +1,70 @@
+@startuml
+
+package functions {
+    abstract Shape {
+        # drawAPI: DrawAPI
+        .. Constructor ..
+        # Shape(drawAPI: DrawAPI): void
+        .. Other ..
+        + {abstract} draw(): void
+    }
+
+    class Circle {
+        - x: int
+        - y: int
+        - radius: int
+        .. Constructor ..
+        + Circle(x: int, y: int, radius: int, drawAPI: DrawAPI): void
+        .. Override ..
+        + draw(): String
+    }
+}
+
+
+package impls {
+    interface DrawAPI {
+        + {abstract} drawCircle(radius: int, x: int, y: int): void
+    }
+
+    class RedCircle {
+        .. Override ..
+        + drawCircle(radius: int, x: int, y: int): void
+    }
+
+    class GreenCircle {
+        .. Override ..
+        + drawCircle(radius: int, x: int, y: int): void
+    }
+}
+
+class Client {
+    + {static} main(): void
+}
+
+DrawAPI <|.. RedCircle
+DrawAPI <|.. GreenCircle
+impls <-right-o Shape
+
+Shape <|-- Circle
+
+Client -up-> RedCircle
+Client -up-> GreenCircle
+Client -up-> Circle
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

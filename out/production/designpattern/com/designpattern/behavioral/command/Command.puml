@@ -1,0 +1,71 @@
+@startuml
+
+package commands {
+    interface Command {
+        + {abstract} execute(): void
+    }
+
+    class BuyStock {
+        - stock: Stock
+        .. Constructor ..
+        + BuyStock(stock: Stock): void
+        .. Other ..
+        + execute(): void
+    }
+
+    class SellStock {
+        - stock: Stock
+        .. Constructor ..
+        + SellStock(stock: Stock): void
+        .. Other ..
+        + execute(): void
+    }
+
+}
+
+class Stock {
+    - name: String
+    - quantity: int
+    .. Other ..
+    + buy(): void
+    + sell(): void
+}
+
+class Broker {
+    - commands: List<Command>
+    .. Other ..
+    + addCommand(command: Command): void
+    + executeCommands(): void
+}
+
+class Client {
+    + {static} main(): void
+}
+
+commands <-right-o Broker
+
+Stock <-down-o BuyStock
+Stock <-down-o SellStock
+
+Command <|.. BuyStock
+Command <|.. SellStock
+
+Client -up-> Broker
+Client --> Stock
+Client -left-> commands
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+

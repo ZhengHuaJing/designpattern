@@ -1,0 +1,60 @@
+@startuml
+
+package loggers {
+    abstract AbstractLogger {
+        + {static} INFO: int = 1
+        + {static} DEBUG: int = 2
+        + {static} ERROR: int = 3
+        # level: int
+        # nextLogger: AbstractLogger
+        .. Setter ..
+        + setNextLogger(nextLogger: AbstractLogger): void
+        .. Other ..
+        + logMessage(level: int, message: String): void
+        # {abstract} write(message: String): void
+    }
+
+    class ConsoleLogger {
+        .. Constructor ..
+        + ConsoleLogger(level: int): void
+        .. Override ..
+        # write(message: String): void
+    }
+
+    class ErrorLogger {
+        .. Constructor ..
+        + ConsoleLogger(level: int): void
+        .. Override ..
+        # write(message: String): void
+    }
+
+    class FileLogger {
+        .. Constructor ..
+        + ConsoleLogger(level: int): void
+        .. Override ..
+        # write(message: String): void
+    }
+
+    AbstractLogger <|-- ConsoleLogger
+    AbstractLogger <|-- ErrorLogger
+    AbstractLogger <|-- FileLogger
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Client -> loggers
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+

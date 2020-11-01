@@ -1,0 +1,62 @@
+@startuml
+
+package shapes {
+    interface Shape {
+        + {abstract} draw(): void
+    }
+
+    class Circle {
+        .. Override ..
+        + draw(): void
+    }
+
+    class Rectangle {
+        .. Override ..
+        + draw(): void
+    }
+
+    class Square {
+        .. Override ..
+        + draw(): void
+    }
+}
+
+class Client {
+    + {static} main(): void
+}
+
+class ShapeMaker {
+    - circle: Shape
+    - rectangle: Shape
+    - square: Shape
+    .. Constructor ..
+    + ShapeMaker(): void
+    .. Other ..
+    + drawCircle(): void
+    + drawRectangle(): void
+    + drawSquare(): void
+}
+
+Shape <|.. Circle
+Shape <|.. Rectangle
+Shape <|.. Square
+
+shapes <-right-* ShapeMaker
+
+ShapeMaker <-down- Client
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+

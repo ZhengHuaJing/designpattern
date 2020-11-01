@@ -1,0 +1,45 @@
+@startuml
+
+package strategies {
+    interface Strategy {
+        + {abstract} doOperation(num1: int, num2: int): int
+    }
+
+    class OperationAdd {
+        .. Override ..
+        + doOperation(num1: int, num2: int): int
+    }
+
+    class OperationSubtraction {
+        .. Override ..
+        + doOperation(num1: int, num2: int): int
+    }
+
+    class OperationMultiply {
+        .. Override ..
+        + doOperation(num1: int, num2: int): int
+    }
+
+    Strategy <|.. OperationAdd
+    Strategy <|.. OperationSubtraction
+    Strategy <|.. OperationMultiply
+}
+
+class Context {
+    - strategy: Strategy
+    .. Constructor ..
+    + Context(strategy: Strategy): void
+    .. Other ..
+    + executeStrategy(num1: int, num2: int): int
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Client -up-> Context
+Client -up-> strategies
+
+Context *-> strategies
+
+@enduml

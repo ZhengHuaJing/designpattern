@@ -1,0 +1,36 @@
+@startuml
+
+package shapes {
+    interface Shape {
+        + {abstract} draw(): void
+    }
+
+    class Circle {
+        - radius: int
+        - color: String
+        .. Constructor ..
+        + Circle(color: String): void
+        + Circle(radius: int, color: String): void
+        .. Getter ..
+        + getColor(): String
+        .. Override ..
+        + draw(): void
+    }
+}
+
+class ShapeFactory {
+    - circleMap: HashMap<Shape>
+    + getCircle(color: String, radius: int): Shape
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Shape <|.. Circle
+
+shapes <-right-* ShapeFactory
+
+ShapeFactory <-- Client
+
+@enduml

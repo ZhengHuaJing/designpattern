@@ -1,0 +1,33 @@
+@startuml
+
+package games {
+    abstract Game {
+        + {abstract} initialize(): void
+        + {abstract} startPlay(): void
+        + {abstract} endPlay(): void
+        + {fina} play(): void
+    }
+
+    class Cricket {
+        + initialize(): void
+        + startPlay(): void
+        + endPlay(): void
+    }
+
+    class Football {
+        + initialize(): void
+        + startPlay(): void
+        + endPlay(): void
+    }
+
+    Game <|-- Cricket
+    Game <|-- Football
+}
+
+class Client {
+    + {static} main(): void
+}
+
+games <-right- Client
+
+@enduml

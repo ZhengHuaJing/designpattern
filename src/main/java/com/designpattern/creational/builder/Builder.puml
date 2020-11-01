@@ -1,0 +1,108 @@
+@startuml
+
+interface Item {
+    + {abstract} name(): String
+    + {abstract} packing(): Packing
+    + {abstract} price(): double
+}
+
+interface Packing {
+    + {abstract} pack(): String
+}
+
+class Wrapper {
+    .. Override ..
+    + pack(): String
+}
+
+class Bottle {
+    .. Override ..
+    + pack(): String
+}
+
+abstract ColdDrink {
+    + packing(): Packing
+    + {abstract} price(): double
+}
+
+class Coke {
+    .. Override ..
+    + name(): String
+    + price(): double
+}
+
+class Pepsi {
+    .. Override ..
+    + name(): String
+    + price(): double
+}
+
+
+abstract Burger {
+    + packing(): Packing
+    + {abstract} price(): double
+}
+
+class VegBurger {
+    .. Override ..
+    + price(): double
+    + name(): String
+}
+
+class ChickenBurger {
+    .. Override ..
+    + price(): double
+    + name(): String
+}
+
+class Meal {
+    - items: List<Item> = new ArrayList<>()
+    + addItem(item: Item): void
+    + getCost(): double
+    + showItems(): void
+}
+
+class MealBuilder {
+    + prepareVegMeal(): Meal
+    + prepareNonVegMeal(): Meal
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Item <|... ColdDrink
+Item <|... Burger
+Item <-o Meal
+
+Packing <|.. Wrapper
+Packing <|.. Bottle
+
+Burger <|-- ChickenBurger
+Burger <|-- VegBurger
+Burger -> Wrapper
+
+ColdDrink <|-- Coke
+ColdDrink <|-- Pepsi
+Bottle <- ColdDrink
+
+Meal <- MealBuilder
+
+MealBuilder <-- Client
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

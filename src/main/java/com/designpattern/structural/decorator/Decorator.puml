@@ -1,0 +1,52 @@
+@startuml
+
+package shapes {
+    interface Shape {
+        + {abstract} draw(): void
+    }
+
+    class Circle {
+        .. Override ..
+        + draw(): void
+    }
+
+    class Rectangle {
+        .. Override ..
+        + draw(): void
+    }
+
+    Shape <|.. Circle
+    Shape <|.. Rectangle
+}
+
+package decorators {
+    abstract ShapeDecorator {
+        # shape: Shape
+        .. Constructor ..
+        + ShapeDecorator(shape: Shape): void
+        .. Other ..
+        + {abstract} draw(): void
+    }
+
+    class RedShapeDecorator {
+        .. Constructor ..
+        + RedShapeDecorator(): void
+        .. Other ..
+        + draw(): void
+        - setRedBorder(): void
+    }
+
+    ShapeDecorator <|-- RedShapeDecorator
+}
+
+class Client {
+    + {static} main(): void
+}
+
+shapes <.o decorators
+
+shapes <-- Client
+decorators <-- Client
+
+
+@enduml

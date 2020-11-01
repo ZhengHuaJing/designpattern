@@ -1,0 +1,47 @@
+@startuml
+
+package contents {
+    class Content {
+        - state: State
+        .. Constructor ..
+        + Content(): void
+        .. Getter ..
+        + getState(): State
+        .. Setter ..
+        + setState(state: State): void
+    }
+}
+
+package states {
+    interface State {
+        + {abstract} doAction(content: Content): void
+    }
+
+    class StartState {
+        .. toString ..
+        + toString(): String
+        .. Override ..
+        + doAction(content: Content): void
+    }
+
+    class StopState {
+        .. toString ..
+        + toString(): String
+        .. Override ..
+        + doAction(content: Content): void
+    }
+
+    State <|-- StartState
+    State <|-- StopState
+}
+
+class Client {
+    + {static} main(): void
+}
+
+states <--* contents
+
+states <-down- Client
+contents <-down- Client
+
+@enduml

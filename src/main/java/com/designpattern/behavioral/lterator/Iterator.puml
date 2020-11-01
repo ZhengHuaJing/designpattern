@@ -1,0 +1,39 @@
+@startuml
+
+interface Iterator {
+    + {abstract} hasNext(): boolean
+    + {abstract} next(): Object
+}
+
+interface Container {
+    + {abstract} getIterator(): Iterator
+}
+
+class NameRepository {
+    - names: String[]
+    .. Constructor ..
+    + NameRepository(names: String[]): void
+    .. Override ..
+    + getIterator(): Iterator
+}
+
+class NameIterator {
+    + hasNext(): boolean
+    + next(): Object
+}
+
+class Client {
+    + {static} main(): void
+}
+
+Container <|.. NameRepository
+
+Iterator <|.. NameIterator
+
+Container -> Iterator
+
+NameRepository +- NameIterator
+
+NameRepository <-- Client
+
+@enduml

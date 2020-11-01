@@ -1,0 +1,9 @@
+
+p
+java:S2975"SRemove this "clone" implementation; use a copy constructor or copy factory instead.(û˜úƒ8›™Ù˜Ğ.
+r
+java:S1206"PThis class overrides "equals()" and should therefore also override "hashCode()".(İ¢êÍıÿÿÿÿ8Ö±ß˜Ğ.
+t
+java:S1104	"RMake radius a static final constant or non-public and provide accessors if needed.(õõìõüÿÿÿÿ8ñÈ™™Ğ.
+e
+java:S1182"HUse super.clone() to create and seed the cloned instance to be returned.(û˜úƒ8›™Ù˜Ğ.

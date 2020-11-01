@@ -1,0 +1,88 @@
+@startuml
+
+package shapes {
+    interface Shape {
+        + {abstract} draw(): void
+    }
+
+    class Circle {
+        .. Override ..
+        + draw(): void
+    }
+
+    class Square {
+        .. Override ..
+        + draw(): void
+    }
+
+    class Rectangle {
+        .. Override ..
+        + draw(): void
+    }
+
+    Shape <|.. Circle
+    Shape <|.. Square
+    Shape <|.. Rectangle
+}
+
+package colors {
+    interface Color {
+        + {abstract} fill(): void
+    }
+
+    class Red {
+        .. Override ..
+        + fill(): void
+    }
+
+    class Green {
+        .. Override ..
+        + fill(): void
+    }
+
+    class Blue {
+        .. Override ..
+        + fill(): void
+    }
+
+    Color <|.. Red
+    Color <|.. Green
+    Color <|.. Blue
+}
+
+package factories {
+    abstract AbstractFactory {
+        + {abstract} getShape(name: String): Shape
+        + {abstract} getColor(name: String): Color
+    }
+
+    class ShapeFactory {
+        .. Override ..
+        + getShape(name: String): Shape
+    }
+
+    class ColorFactory {
+        .. Override ..
+        + getColor(name: String): Color
+    }
+
+    AbstractFactory <|-- ShapeFactory : 继承抽象类
+    AbstractFactory <|-- ColorFactory : 继承抽象类
+}
+
+class FactoryProducer {
+    + getFactory(): AbstractFactory
+}
+
+FactoryProducer --> factories : 创建生成器类
+
+ShapeFactory --> shapes : 创建工厂类
+ColorFactory --> colors : 创建工厂类
+
+class Client {
+    + {static} main(): void
+}
+
+FactoryProducer <- Client : 使用
+
+@enduml

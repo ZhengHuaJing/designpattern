@@ -1,0 +1,13 @@
+
+v
+java:S22933"YReplace the type specification in this constructor call with the diamond operator ("<>").(žÒá‚8³¾ð¬Ñ.
+U	java:S106,"9Replace this use of System.out or System.err by a logger.(…àÎÄ8³¾ð¬Ñ.
+Z	java:S106D"9Replace this use of System.out or System.err by a logger.(úöÂ ûÿÿÿÿ8³¾ð¬Ñ.
+h
+java:S2142#"FEither re-interrupt this method or rethrow the "InterruptedException".(è®ã¶øÿÿÿÿ8³¾ð¬Ñ.
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(úöÂ ûÿÿÿÿ8³¾ð¬Ñ.
+U	java:S106?"9Replace this use of System.out or System.err by a logger.(ÝñøÝ8³¾ð¬Ñ.
+U	java:S106*"9Replace this use of System.out or System.err by a logger.(¹Îí¸8³¾ð¬Ñ.
+F
+java:S2140")Use "java.util.Random.nextInt()" instead.(Ü¶…Ø8³¾ð¬Ñ.
+Z	java:S1060"9Replace this use of System.out or System.err by a logger.(¦œ²šþÿÿÿÿ8³¾ð¬Ñ.

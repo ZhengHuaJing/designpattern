@@ -1,0 +1,65 @@
+@startuml
+
+package advanced_media_players {
+    interface AdvancedMediaPlayer {
+        + {abstract} playVlc(fileName: String): void
+        + {abstract} playMp4(fileName: String): void
+    }
+
+    class VlcPlayer {
+        .. Overrider ..
+        + playVlc(fileName: String): void
+        + playMp4(fileName: String): void
+    }
+
+    class Mp4Player {
+        .. Overrider ..
+        + playVlc(fileName: String): void
+        + playMp4(fileName: String): void
+    }
+
+    AdvancedMediaPlayer <|.. VlcPlayer
+    AdvancedMediaPlayer <|.. Mp4Player
+}
+
+interface MediaPlayer {
+    + {abstract} play(audioType: String, fileName: String): void
+}
+
+class MediaAdapter {
+    - advancedMediaPlayer: AdvancedMediaPlayer
+    .. Constructor ..
+    + MediaAdapter(audioType: String): void
+    .. Overrider ..
+    + play(audioType: String, fileName: String): void
+}
+
+class AudioPlayer {
+    - mediaAdapter: MediaAdapter
+    .. Overrider ..
+    + play(audioType: String, fileName: String): void
+}
+
+class Client {
+    + {static} main(): void
+}
+
+MediaPlayer <|.. MediaAdapter
+MediaPlayer <|.. AudioPlayer
+
+advanced_media_players <--* MediaAdapter
+AudioPlayer *-> MediaAdapter
+
+Client --> AudioPlayer
+
+@enduml
+
+
+
+
+
+
+
+
+
+

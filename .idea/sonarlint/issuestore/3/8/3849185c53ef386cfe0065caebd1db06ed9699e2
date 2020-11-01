@@ -1,0 +1,11 @@
+
+:
+java:S2386"Make this member "protected".(Ãê†…8øÖ¶ªÑ.
+U
+java:S1118":Add a private constructor to hide the implicit public one.(ôÏš¸øÿÿÿÿ
+p
+java:S3824"NReplace this "Map.get()" and condition with a call to "Map.computeIfAbsent()".(²ÍĞˆúÿÿÿÿ8­‰ºªÑ.
+G
+java:S1444"1Make this "public static treeTypeMap" field final(Ãê†…
+m
+java:S1104"WMake treeTypeMap a static final constant or non-public and provide accessors if needed.(Ãê†…

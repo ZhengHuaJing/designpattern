@@ -1,0 +1,48 @@
+@startuml
+
+interface Image {
+    + {static} display(): void
+}
+
+class RealImage {
+    - fileName: String
+    .. Constructor ..
+    + RealImage(fileName: String): void
+    .. Override ..
+     + display(): void
+     + loadFromDisk(): void
+}
+
+class ProxyImage {
+    - realImage: RealImage
+    - fileName: String
+    .. Constructor ..
+    + ProxyImage(): void
+    .. Override ..
+    + display(): void
+}
+
+class Client {
+    + {static} main(): void3
+}
+
+Image <|.. RealImage
+Image <|.. ProxyImage
+
+ProxyImage *-> RealImage
+
+Client -> ProxyImage
+
+@enduml
+
+
+
+
+
+
+
+
+
+
+
+
